@@ -72,13 +72,17 @@ summary is always deterministic).
 
 ## Run the full pipeline
 
-The LLM stages need credentials — either of:
+The LLM stages are provider-agnostic — pick any one of three backends in
+`.env` (same prompts and schema validation on all of them):
 
-- `ANTHROPIC_API_KEY` in `.env` (default backend, Anthropic SDK), or
-- `LLM_BACKEND=claude_cli` in `.env` — routes LLM calls through a locally
-  installed, logged-in [Claude Code](https://claude.com/claude-code) CLI
-  (`claude -p`), so a Claude subscription works with no API key. Same
-  prompts and schema validation; slower per call.
+- `LLM_BACKEND=api` (default) — Anthropic SDK, set `ANTHROPIC_API_KEY`.
+- `LLM_BACKEND=openai_compat` — any provider speaking the OpenAI
+  chat-completions protocol: OpenAI, Gemini, Mistral, Groq, a local Ollama,
+  or Anthropic's compat endpoint. Set `LLM_API_KEY`, `LLM_BASE_URL`, and a
+  matching `LLM_MODEL` (e.g. `gpt-4o`).
+- `LLM_BACKEND=claude_cli` — a locally installed, logged-in
+  [Claude Code](https://claude.com/claude-code) CLI (`claude -p`); a Claude
+  subscription works with no API key at all. Slower per call.
 
 ```bash
 .venv/bin/uvicorn app.main:app --reload
@@ -133,7 +137,8 @@ app/graph/schema.py      constraints/indexes + absence-modeling doc
 app/graph/client.py      the ONLY Cypher-writing module (MERGE upserts)
 app/graph/queries.py     BLAST_RADIUS + ABSENT_REQUIREMENTS
 app/agents/llm.py        LLM wrapper: schema-validated JSON, one retry;
-                         backends: Anthropic SDK or local Claude Code CLI
+                         backends: Anthropic SDK, any OpenAI-compatible
+                         provider, or a local Claude Code CLI
 app/agents/spec_parser.py   Stage 1: doc -> Requirements
 app/agents/crawler.py       Stage 2: Playwright over a fixed screen list
 app/agents/req_linker.py    Graph build: Requirement<->UIElement (IMPLEMENTS)

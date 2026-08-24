@@ -14,13 +14,18 @@ class Settings(BaseSettings):
     neo4j_user: str = "neo4j"
     neo4j_password: str = "testpassword123"
 
-    # LLM
-    # backend "api" uses the Anthropic SDK (needs anthropic_api_key);
-    # "claude_cli" shells out to a locally-installed, already-authenticated
-    # Claude Code CLI (`claude -p`) — useful when you have a subscription
-    # but no API key. Same prompts, same validation, slower per call.
+    # LLM — three backends, same prompts and validation on all of them:
+    #   "api"          Anthropic SDK (needs anthropic_api_key)
+    #   "openai_compat" any provider speaking the OpenAI chat-completions
+    #                  protocol: OpenAI, Gemini, Mistral, Groq, local Ollama,
+    #                  and Anthropic's own compat endpoint. Configure
+    #                  llm_api_key + llm_base_url + llm_model.
+    #   "claude_cli"   a locally-installed, logged-in Claude Code CLI
+    #                  (`claude -p`) — no API key, slower per call.
     llm_backend: str = "api"
     anthropic_api_key: str = ""
+    llm_api_key: str = ""  # openai_compat backend
+    llm_base_url: str = "https://api.openai.com/v1"  # openai_compat backend
     llm_model: str = "claude-sonnet-4-5"
 
     # Target app / repo

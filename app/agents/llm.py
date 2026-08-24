@@ -60,9 +60,32 @@ def _complete_claude_cli(system: str, user: str) -> str:
     return data.get("result", "")
 
 
+_openai_client = None
+
+
+def _complete_openai_compat(system: str, user: str, max_tokens: int) -> str:
+    """Any provider speaking the OpenAI chat-completions protocol, selected
+    by base_url: OpenAI itself, Gemini, Mistral, Groq, a local Ollama, or
+    Anthropic's compat endpoint. One backend instead of one per vendor."""
+    global _openai_client
+    if _openai_client is None:
+        from openai import OpenAI
+        _openai_client = OpenAI(api_key=settings.llm_api_key,
+                                base_url=settings.llm_base_url)
+    resp = _openai_client.chat.completions.create(
+        model=settings.llm_model,
+        max_tokens=max_tokens,
+        messages=[{"role": "system", "content": system},
+                  {"role": "user", "content": user}],
+    )
+    return resp.choices[0].message.content or ""
+
+
 def complete(system: str, user: str, max_tokens: int = 4096) -> str:
     if settings.llm_backend == "claude_cli":
         return _complete_claude_cli(system, user)
+    if settings.llm_backend == "openai_compat":
+        return _complete_openai_compat(system, user, max_tokens)
     return _complete_api(system, user, max_tokens)
 
 
