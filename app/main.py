@@ -100,10 +100,9 @@ def run_link() -> dict:
 
     implements = req_linker.link_requirements(crawl.screens, spec.requirements)
     elements = [el for s in crawl.screens for el in s.elements]
-    try:
-        code_elements, built_by = code_mapper.map_elements(elements)
-    except FileNotFoundError as e:
-        raise HTTPException(409, str(e))
+    # Uses the local clone when present, the GitHub tree/code-search APIs
+    # otherwise (set GITHUB_TOKEN for the testid-search tier + rate limits).
+    code_elements, built_by = code_mapper.map_elements_auto(elements)
 
     with _client() as client:
         client.upsert_implements_edges(implements)

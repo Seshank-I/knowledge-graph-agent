@@ -242,3 +242,73 @@ def map_elements(elements: list[UIElement],
         ).finalize(threshold))
 
     return list(code_by_path.values()), edges
+
+
+# ---------------------------------------------------------------------------
+# GitHub-API backing for the remote mapper + the auto entry point used by
+# the /pipeline/link endpoint: local clone when present, GitHub API otherwise.
+# ---------------------------------------------------------------------------
+
+def _github_headers() -> dict:
+    h = {"Accept": "application/vnd.github+json"}
+    if settings.github_token:
+        h["Authorization"] = f"Bearer {settings.github_token}"
+    return h
+
+
+def _github_ui_paths() -> list[str]:
+    """UI source-file list from the GitHub tree API (one request)."""
+    import httpx
+    resp = httpx.get(
+        f"https://api.github.com/repos/{settings.target_repo_slug}/git/trees/main",
+        params={"recursive": "1"}, headers=_github_headers(), timeout=60)
+    resp.raise_for_status()
+    return [
+        e["path"] for e in resp.json()["tree"]
+        if e["type"] == "blob" and e["path"].endswith(SOURCE_EXTS)
+        and any(e["path"].startswith(d) for d in UI_DIRS)
+        and not _is_test_path(e["path"])
+    ]
+
+
+def _github_search_testid_factory():
+    """Per-run memoized code search. Requires a token (the code-search API
+    rejects anonymous calls); without one, testid search is skipped and the
+    token-overlap + LLM-fallback tiers carry the mapping."""
+    import time
+    import httpx
+    cache: dict[str, list[str]] = {}
+
+    def search(testid: str) -> list[str]:
+        if not settings.github_token:
+            return []
+        if testid in cache:
+            return cache[testid]
+        time.sleep(6)  # code-search rate limit: 10 requests/min
+        try:
+            resp = httpx.get(
+                "https://api.github.com/search/code",
+                params={"q": f'repo:{settings.target_repo_slug} "{testid}"'},
+                headers=_github_headers(), timeout=60)
+            resp.raise_for_status()
+            hits = sorted({item["path"] for item in resp.json()["items"]})
+        except Exception:
+            log.exception("code search failed for %r — skipping testid tier", testid)
+            hits = []
+        hits = [h for h in hits if h.endswith(SOURCE_EXTS)
+                and any(h.startswith(d) for d in UI_DIRS) and not _is_test_path(h)]
+        cache[testid] = hits
+        return hits
+
+    return search
+
+
+def map_elements_auto(elements: list[UIElement]) -> tuple[list[CodeElement], list[BuiltByEdge]]:
+    repo = Path(settings.target_repo_path)
+    if repo.exists():
+        return map_elements(elements, repo_ref=f"{settings.target_repo_slug}@main")
+    log.info("no local clone at %s — mapping via GitHub API (%s)",
+             repo, settings.target_repo_slug)
+    return map_elements_remote(
+        elements, _github_ui_paths(), _github_search_testid_factory(),
+        repo_ref=f"{settings.target_repo_slug}@main")
