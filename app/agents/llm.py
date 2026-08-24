@@ -51,7 +51,9 @@ def _complete_claude_cli(system: str, user: str) -> str:
         capture_output=True, text=True, timeout=600,
     )
     if proc.returncode != 0:
-        raise RuntimeError(f"claude CLI failed: {proc.stderr[:500]}")
+        raise RuntimeError(
+            f"claude CLI failed (exit {proc.returncode}): "
+            f"stderr={proc.stderr[:400]!r} stdout={proc.stdout[:400]!r}")
     data = json.loads(proc.stdout)
     if data.get("is_error"):
         raise RuntimeError(f"claude CLI returned an error result: {data.get('result', '')[:500]}")

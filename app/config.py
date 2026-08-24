@@ -35,5 +35,11 @@ class Settings(BaseSettings):
     # Confidence threshold below which an edge is flagged needs_review
     confidence_threshold: float = 0.5
 
+    # Spec-parser scoping for tight live runs: cap the number of extracted
+    # requirements (0 = unlimited) and/or restrict to feature areas
+    # (comma-separated slugs, e.g. "booking,availability"; empty = all).
+    spec_max_requirements: int = 0
+    spec_feature_areas: str = ""
+
 
 settings = Settings()

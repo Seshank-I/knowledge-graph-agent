@@ -86,10 +86,15 @@ The LLM stages need credentials — either of:
 Then drive the pipeline in order (each stage is idempotent — safe to re-run):
 
 ```bash
-# Stage 1 — extract requirements from a public doc
+# Stage 1 — extract requirements from a public doc.
+# On a broad doc this can yield hundreds of requirements; scope a live run
+# with max_requirements (testable ones kept first) and/or feature_areas
+# (also settable via SPEC_MAX_REQUIREMENTS / SPEC_FEATURE_AREAS in .env).
 curl -X POST localhost:8000/pipeline/spec \
   -H 'content-type: application/json' \
-  -d '{"source": "https://cal.com/docs"}'
+  -d '{"source": "https://cal.com/docs/llms.txt",
+       "max_requirements": 20,
+       "feature_areas": ["booking", "bookings", "availability", "auth"]}'
 
 # Stage 2 — crawl the fixed 6-screen Cal.com list (screenshots/DOM -> data/artifacts/)
 curl -X POST localhost:8000/pipeline/crawl

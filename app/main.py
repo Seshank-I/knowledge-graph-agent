@@ -56,11 +56,18 @@ def health() -> dict:
 
 class SpecRequest(BaseModel):
     source: str  # URL or local file path of the product doc
+    # Optional scoping for tight live runs (default to settings):
+    max_requirements: int | None = None       # cap count; testable kept first
+    feature_areas: list[str] | None = None    # e.g. ["booking", "availability"]
 
 
 @app.post("/pipeline/spec", response_model=SpecParseResult)
 def run_spec(body: SpecRequest) -> SpecParseResult:
-    result = spec_parser.parse_spec(body.source)
+    result = spec_parser.parse_spec(
+        body.source,
+        max_requirements=body.max_requirements,
+        feature_areas=body.feature_areas,
+    )
     with _client() as client:
         client.upsert_requirements(result.requirements)
     DATA_DIR.mkdir(exist_ok=True)

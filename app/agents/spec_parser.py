@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from typing import Optional
 
 import httpx
 
@@ -54,8 +55,35 @@ def _load_source(source: str) -> str:
     return Path(source).read_text()
 
 
-def parse_spec(source: str) -> SpecParseResult:
-    """`source` is a URL or local file path to the product doc."""
+def _scope(requirements: list[Requirement],
+           max_requirements: Optional[int],
+           feature_areas: Optional[list[str]]) -> list[Requirement]:
+    """Deterministic post-extraction scoping for tight live runs: keep only
+    the named feature areas (if any), then cap the count preserving the
+    doc's order. Testable requirements survive a cap first — they are the
+    ones the graph's coverage story is about."""
+    areas = {a.strip().lower() for a in (feature_areas or []) if a.strip()}
+    if areas:
+        requirements = [r for r in requirements if r.feature_area.lower() in areas]
+    if max_requirements and len(requirements) > max_requirements:
+        ranked = sorted(range(len(requirements)),
+                        key=lambda i: (not requirements[i].testable, i))
+        keep = set(ranked[:max_requirements])
+        requirements = [r for i, r in enumerate(requirements) if i in keep]
+    return requirements
+
+
+def parse_spec(source: str,
+               max_requirements: Optional[int] = None,
+               feature_areas: Optional[list[str]] = None) -> SpecParseResult:
+    """`source` is a URL or local file path to the product doc.
+    `max_requirements` / `feature_areas` default to settings
+    (spec_max_requirements / spec_feature_areas)."""
+    from app.config import settings
+    if max_requirements is None:
+        max_requirements = settings.spec_max_requirements or None
+    if feature_areas is None and settings.spec_feature_areas:
+        feature_areas = settings.spec_feature_areas.split(",")
     doc_text = _load_source(source)
     # Crude HTML -> text so we don't burn tokens on markup; docs pages are
     # mostly prose so this is good enough for extraction.
@@ -70,9 +98,11 @@ def parse_spec(source: str) -> SpecParseResult:
         _LLMSpecOutput,
     )
 
+    scoped = _scope(list(result.requirements), max_requirements, feature_areas)
+
     requirements: list[Requirement] = []
     seen_ids: set[str] = set()
-    for req in result.requirements:
+    for req in scoped:
         rid = _slugify(req.text)
         # Disambiguate collisions deterministically.
         base, n = rid, 2
