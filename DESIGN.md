@@ -376,8 +376,9 @@ of the system and the two the assignment weights hardest. The cuts, each a
 decision rather than an omission:
 
 **Cut 1 — Fixed crawl list, not autonomous exploration.** The brief says
-"explores autonomously"; this system crawls a declared list of six
-high-value screens with declared flows. Open-ended crawling of an
+"explores autonomously"; this system crawls a declared list of seven
+high-value screens with declared flows (one screen — the booking form —
+is reached by a declared read-only interaction, since it has no stable URL). Open-ended crawling of an
 authenticated production app is its own project — loop detection, state
 pollution, destructive-action safety (an autonomous agent that clicks
 "delete event type" on a real account is a bug with consequences). More
@@ -442,10 +443,11 @@ it lifts the certainty of the *entire* report, not just one layer. Second
 rather than first only because item 1 is what proves the lift.
 
 **3. Crawl expansion: authenticated screens + one interaction depth (~2 days).**
-Log in with a dedicated test account, capture the six authenticated screens
-already declared in the flow definitions, and add bounded interaction
-(open modals/menus, never submit) to capture elements the visible-DOM crawl
-misses. Reasoning: the absence layer currently reports six requirements as
+Log in with a dedicated test account, capture the four authenticated screens
+already declared in the flow definitions, and extend the crawler's existing
+interaction mechanism (currently a single click-to-reach step for the booking
+form) to open modals/menus — never submitting — to capture elements the
+visible-DOM crawl misses. Reasoning: the absence layer currently reports six requirements as
 `not_found` for the honest-but-unsatisfying reason that their screens were
 never visited; this item converts crawl-scope absences into real
 product-coverage signal. Third because it multiplies the *value* of the graph

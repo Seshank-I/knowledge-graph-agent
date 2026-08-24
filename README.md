@@ -25,8 +25,9 @@ silently trusted or dropped.
 ## Setup
 
 ```bash
-# 1. Python 3.10+ (developed on 3.12)
+# 1. Python 3.10+ (developed on 3.12) — with uv, or plain venv:
 uv venv --python 3.12 .venv && uv pip install -r requirements.txt --python .venv/bin/python
+#   (no uv?  python3 -m venv .venv && .venv/bin/pip install -r requirements.txt)
 .venv/bin/playwright install chromium
 
 # 2. Local Neo4j
@@ -96,7 +97,10 @@ curl -X POST localhost:8000/pipeline/spec \
        "max_requirements": 20,
        "feature_areas": ["booking", "bookings", "availability", "auth"]}'
 
-# Stage 2 — crawl the fixed 6-screen Cal.com list (screenshots/DOM -> data/artifacts/)
+# Stage 2 — crawl the fixed 7-screen Cal.com list (screenshots/DOM -> data/artifacts/).
+# The booking form is reached by interaction (click the first open slot);
+# nothing is ever submitted. Auth screens are skipped cleanly without a
+# TARGET_APP_EMAIL/PASSWORD test account.
 curl -X POST localhost:8000/pipeline/crawl
 
 # Stage 3 — build IMPLEMENTS + BUILT_BY edges, stamp coverage_status
@@ -128,13 +132,16 @@ app/models.py            typed contracts between stages
 app/graph/schema.py      constraints/indexes + absence-modeling doc
 app/graph/client.py      the ONLY Cypher-writing module (MERGE upserts)
 app/graph/queries.py     BLAST_RADIUS + ABSENT_REQUIREMENTS
-app/agents/llm.py        Anthropic wrapper: schema-validated JSON, one retry
+app/agents/llm.py        LLM wrapper: schema-validated JSON, one retry;
+                         backends: Anthropic SDK or local Claude Code CLI
 app/agents/spec_parser.py   Stage 1: doc -> Requirements
 app/agents/crawler.py       Stage 2: Playwright over a fixed screen list
 app/agents/req_linker.py    Graph build: Requirement<->UIElement (IMPLEMENTS)
 app/agents/code_mapper.py   Stage 3: UIElement -> CodeElement (BUILT_BY)
 app/agents/reasoner.py      Stage 4: PR -> blast-radius report
-app/main.py              FastAPI wiring
+app/main.py              FastAPI wiring (one endpoint per stage)
+scripts/seed_sample_graph.py  load the committed sample graph (no keys needed)
+tests/test_graph_smoke.py     graph-layer smoke test (no LLM calls)
 ```
 
 ## Sample run
