@@ -4,3 +4,4 @@ __pycache__/
 .env
 .DS_Store
 data/cal.com/
+LOOM_SCRIPT.md
