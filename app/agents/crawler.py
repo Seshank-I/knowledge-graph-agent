@@ -45,7 +45,12 @@ SCREENS: list[dict] = [
     {"id": "screen-bookings", "name": "Bookings list", "path": "/bookings/upcoming", "auth": True},
     {"id": "screen-settings-profile", "name": "Profile Settings", "path": "/settings/my-account/profile", "auth": True},
     {"id": "screen-booker-landing", "name": "Public profile (event list)", "path": "/{username}", "auth": False},
-    {"id": "screen-booking-page", "name": "Public booking page", "path": "/{username}/30min", "auth": False},
+    # The booking form has no stable URL (event slugs vary per user), so this
+    # screen is reached by interaction: load the public booker and click the
+    # first available time slot. Read-only — the form is captured, never
+    # submitted.
+    {"id": "screen-booking-page", "name": "Public booking page (form step)",
+     "path": "/{username}", "auth": False, "interact": "open_booking_form"},
 ]
 
 FLOWS: list[Flow] = [
@@ -166,6 +171,28 @@ async def _login(page: Page) -> None:
     await page.wait_for_url("**/event-types**", timeout=20_000)
 
 
+async def _open_booking_form(page: Page) -> None:
+    """From a public booker: reach the booking-form step by clicking the
+    first available time slot. Handles both booker shapes: slot picker
+    rendered directly (single-event users), or an event-type list first.
+    Read-only — never submits the form."""
+    if not await page.locator("[data-testid='time']").count():
+        # Event-list shape: open the first event type, then wait for slots.
+        await page.click("[data-testid='event-type-link']", timeout=10_000)
+        await page.wait_for_selector("[data-testid='time'], [data-testid='day']",
+                                     timeout=15_000)
+    if not await page.locator("[data-testid='time']").count():
+        # No slots rendered for the shown day/month — pick an enabled day.
+        await page.click("[data-testid='day'][data-disabled='false']", timeout=10_000)
+    await page.click("[data-testid='time']", timeout=10_000)
+    await page.wait_for_selector("[name='name'], [data-testid='confirm-book-button']",
+                                 timeout=15_000)
+    await page.wait_for_timeout(1500)  # let the form finish rendering
+
+
+INTERACTIONS = {"open_booking_form": _open_booking_form}
+
+
 async def crawl(username: str | None = None) -> CrawlResult:
     """`username` fills the public-booking-page path template; defaults to the
     test account's email local-part."""
@@ -186,6 +213,9 @@ async def crawl(username: str | None = None) -> CrawlResult:
                     await _login(page)
                     logged_in = True
                 await page.goto(url, wait_until="networkidle", timeout=30_000)
+                if spec.get("interact"):
+                    await INTERACTIONS[spec["interact"]](page)
+                    url = page.url  # record where the interaction landed
 
                 await page.screenshot(
                     path=str(ARTIFACTS_DIR / f"{spec['id']}.png"), full_page=True)
