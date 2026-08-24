@@ -1,0 +1,73 @@
+"""
+Thin shared wrapper around the Anthropic client used by every LLM-touching
+stage (spec parser, crawler element labeling, code-mapper fallback, reasoner
+report). One place for: model choice, JSON-extraction, and Pydantic
+validation with a single retry that feeds the validation error back to the
+model — that's the whole "structured output" story, deliberately no more.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+from typing import Type, TypeVar
+
+from anthropic import Anthropic
+from pydantic import BaseModel, ValidationError
+
+from app.config import settings
+
+T = TypeVar("T", bound=BaseModel)
+
+_client: Anthropic | None = None
+
+
+def client() -> Anthropic:
+    global _client
+    if _client is None:
+        _client = Anthropic(api_key=settings.anthropic_api_key)
+    return _client
+
+
+def complete(system: str, user: str, max_tokens: int = 4096) -> str:
+    resp = client().messages.create(
+        model=settings.llm_model,
+        max_tokens=max_tokens,
+        system=system,
+        messages=[{"role": "user", "content": user}],
+    )
+    return resp.content[0].text
+
+
+def _extract_json(text: str) -> str:
+    """Pull the first JSON object/array out of a response that may wrap it
+    in prose or a ```json fence."""
+    fence = re.search(r"```(?:json)?\s*(.*?)```", text, re.DOTALL)
+    if fence:
+        text = fence.group(1)
+    start = min((i for i in (text.find("{"), text.find("[")) if i != -1), default=0)
+    return text[start:].strip()
+
+
+def complete_validated(system: str, user: str, model_cls: Type[T],
+                       max_tokens: int = 8192) -> T:
+    """
+    Ask for JSON matching `model_cls`, validate, and on failure retry ONCE
+    with the validation error appended. Two strikes raises — per the
+    no-self-healing-loops constraint, failures surface instead of spinning.
+    """
+    schema = json.dumps(model_cls.model_json_schema(), indent=2)
+    system_full = (
+        f"{system}\n\nRespond with ONLY a JSON object matching this JSON schema "
+        f"(no prose, no markdown fence):\n{schema}"
+    )
+    raw = complete(system_full, user, max_tokens=max_tokens)
+    try:
+        return model_cls.model_validate_json(_extract_json(raw))
+    except (ValidationError, json.JSONDecodeError) as first_err:
+        retry_user = (
+            f"{user}\n\nYour previous response failed validation:\n{first_err}\n"
+            f"Previous response:\n{raw}\n\nReturn corrected JSON only."
+        )
+        raw = complete(system_full, retry_user, max_tokens=max_tokens)
+        return model_cls.model_validate_json(_extract_json(raw))

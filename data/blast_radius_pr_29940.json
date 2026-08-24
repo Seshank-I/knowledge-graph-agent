@@ -1,0 +1,15 @@
+{
+  "pr": {
+    "id": "pr-29940",
+    "number": 29940,
+    "title": "fix(emails): customReplyToEmail no longer dropped when hideOrganizerEmail is true ",
+    "url": "https://github.com/calcom/cal.diy/pull/29940",
+    "changed_files": [
+      "packages/lib/getReplyToHeader.test.ts",
+      "packages/lib/getReplyToHeader.ts"
+    ]
+  },
+  "affected": [],
+  "needs_review": [],
+  "summary": "PR #29940 (\"fix(emails): customReplyToEmail no longer dropped when hideOrganizerEmail is true \") touches no code that is mapped to the crawled UI, so no user-facing impact was traced. This can mean the change is backend-only, or that it lands outside the crawled screens — treat it as unassessed rather than safe."
+}

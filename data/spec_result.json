@@ -1,0 +1,157 @@
+{
+  "requirements": [
+    {
+      "id": "req-invitee-can-view-a-persons-public",
+      "text": "Invitee can view a person's public profile page listing their bookable event types",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-open-an-event-type",
+      "text": "Invitee can open an event type and see available time slots for it",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-pick-a-date-and",
+      "text": "Invitee can pick a date and time slot to book a meeting",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-select-their-timezone-when",
+      "text": "Invitee can select their timezone when viewing available slots",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-switch-between-12-hour-and",
+      "text": "Invitee can switch between 12-hour and 24-hour time format on the booking page",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-enter-their-name-and",
+      "text": "Invitee can enter their name and email to confirm a booking",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-add-guests-to-a",
+      "text": "Invitee can add guests to a booking",
+      "feature_area": "booking",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-cancel-an-existing-booking",
+      "text": "Invitee can cancel an existing booking",
+      "feature_area": "bookings",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-invitee-can-reschedule-an-existing-booking",
+      "text": "Invitee can reschedule an existing booking to a different slot",
+      "feature_area": "bookings",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-log-in-with-email",
+      "text": "User can log in with email and password",
+      "feature_area": "auth",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-create-a-new-event",
+      "text": "User can create a new event type with a title and duration",
+      "feature_area": "event-types",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-create-and-edit-availability",
+      "text": "User can create and edit availability schedules defining working hours",
+      "feature_area": "availability",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-create-an-out-of-office-entry",
+      "text": "User can create an out-of-office entry so no bookings land in that period",
+      "feature_area": "availability",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-view-their-upcoming-bookings",
+      "text": "User can view their upcoming bookings in a list",
+      "feature_area": "bookings",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-confirm-or-decline-a",
+      "text": "User can confirm or decline a booking that requires confirmation",
+      "feature_area": "bookings",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-can-update-their-profile-name",
+      "text": "User can update their profile (name, email) in settings",
+      "feature_area": "settings",
+      "testable": true,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-a-booked-slot-is-reserved-so",
+      "text": "A booked slot is reserved so others cannot double-book it for a period of time",
+      "feature_area": "booking",
+      "testable": false,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-booking-related-emails-notify-attendees-of-changes",
+      "text": "Booking-related emails notify attendees of changes such as location updates",
+      "feature_area": "notifications",
+      "testable": false,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    },
+    {
+      "id": "req-user-booking-limits-cap-total-bookings",
+      "text": "User booking limits cap total bookings per day, week, month, or year",
+      "feature_area": "availability",
+      "testable": false,
+      "source_doc": "https://cal.com/docs/llms.txt",
+      "coverage_status": null
+    }
+  ],
+  "source_doc": "https://cal.com/docs/llms.txt"
+}

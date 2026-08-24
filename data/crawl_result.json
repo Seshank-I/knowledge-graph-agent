@@ -1,0 +1,328 @@
+{
+  "screens": [
+    {
+      "id": "screen-login",
+      "url": "https://app.cal.com/auth/login",
+      "name": "Login",
+      "elements": [
+        {
+          "id": "screen-login--google",
+          "screen_id": "screen-login",
+          "selector": "[data-testid=\"google\"]",
+          "element_type": "button",
+          "label": "sign in with google",
+          "raw_text": "Sign in with Google"
+        },
+        {
+          "id": "screen-login--microsoft",
+          "screen_id": "screen-login",
+          "selector": "[data-testid=\"microsoft\"]",
+          "element_type": "button",
+          "label": "sign in with microsoft",
+          "raw_text": "Sign in with Microsoft"
+        },
+        {
+          "id": "screen-login--email",
+          "screen_id": "screen-login",
+          "selector": "#email",
+          "element_type": "email",
+          "label": "email address input",
+          "raw_text": null
+        },
+        {
+          "id": "screen-login--forgot",
+          "screen_id": "screen-login",
+          "selector": "a:has-text(\"Forgot?\")",
+          "element_type": "link",
+          "label": "forgot password link",
+          "raw_text": "Forgot?"
+        },
+        {
+          "id": "screen-login--password",
+          "screen_id": "screen-login",
+          "selector": "#password",
+          "element_type": "password",
+          "label": "password input",
+          "raw_text": null
+        },
+        {
+          "id": "screen-login--el-5",
+          "screen_id": "screen-login",
+          "selector": "button",
+          "element_type": "button",
+          "label": "toggle password visibility",
+          "raw_text": null
+        },
+        {
+          "id": "screen-login--continue",
+          "screen_id": "screen-login",
+          "selector": "button:has-text(\"Continue\")",
+          "element_type": "button",
+          "label": "submit login",
+          "raw_text": "Continue"
+        },
+        {
+          "id": "screen-login--create-account",
+          "screen_id": "screen-login",
+          "selector": "a:has-text(\"Create account\")",
+          "element_type": "link",
+          "label": "create account link",
+          "raw_text": "Create account"
+        },
+        {
+          "id": "screen-login--samlandoidc",
+          "screen_id": "screen-login",
+          "selector": "[data-testid=\"samlAndOidc\"]",
+          "element_type": "button",
+          "label": "sign in with saml/oidc",
+          "raw_text": "Sign in with SAML/OIDC"
+        }
+      ]
+    },
+    {
+      "id": "screen-booker-landing",
+      "url": "https://app.cal.com/peer",
+      "name": "Public profile (event list)",
+      "elements": [
+        {
+          "id": "screen-booker-landing--overlay-calendar-switch",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"overlay-calendar-switch\"]",
+          "element_type": "switch",
+          "label": "overlay my calendar toggle",
+          "raw_text": "on"
+        },
+        {
+          "id": "screen-booker-landing--toggle-group-item-month-view",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"toggle-group-item-month_view\"]",
+          "element_type": "radio",
+          "label": "switch to monthly view",
+          "raw_text": "$Switch to monthly view"
+        },
+        {
+          "id": "screen-booker-landing--toggle-group-item-column-view",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"toggle-group-item-column_view\"]",
+          "element_type": "radio",
+          "label": "switch to column view",
+          "raw_text": "$Switch to column view"
+        },
+        {
+          "id": "screen-booker-landing--avatar-href",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"avatar-href\"]",
+          "element_type": "link",
+          "label": "host profile link",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booker-landing--react-select-2-input",
+          "screen_id": "screen-booker-landing",
+          "selector": "#react-select-2-input",
+          "element_type": "text",
+          "label": "timezone selector",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booker-landing--decrementmonth",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"decrementMonth\"]",
+          "element_type": "button",
+          "label": "previous month",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booker-landing--incrementmonth",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"incrementMonth\"]",
+          "element_type": "button",
+          "label": "next month",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booker-landing--day",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"day\"]",
+          "element_type": "button",
+          "label": "pick a date",
+          "raw_text": "8"
+        },
+        {
+          "id": "screen-booker-landing--toggle-group-item-h-mma",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"toggle-group-item-h:mma\"]",
+          "element_type": "radio",
+          "label": "12-hour time format toggle",
+          "raw_text": "12h"
+        },
+        {
+          "id": "screen-booker-landing--toggle-group-item-hh-mm",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"toggle-group-item-HH:mm\"]",
+          "element_type": "radio",
+          "label": "24-hour time format toggle",
+          "raw_text": "24h"
+        },
+        {
+          "id": "screen-booker-landing--time",
+          "screen_id": "screen-booker-landing",
+          "selector": "[data-testid=\"time\"]",
+          "element_type": "button",
+          "label": "pick a time slot",
+          "raw_text": "4:00pm"
+        },
+        {
+          "id": "screen-booker-landing--el-76",
+          "screen_id": "screen-booker-landing",
+          "selector": "a",
+          "element_type": "link",
+          "label": "cal.com branding link",
+          "raw_text": null
+        }
+      ]
+    },
+    {
+      "id": "screen-booking-page",
+      "url": "https://i.cal.com/peer/meet?user=peer&orgRedirection=true&slot=2026-08-24T10%3A30%3A00.000Z",
+      "name": "Public booking page (form step)",
+      "elements": [
+        {
+          "id": "screen-booking-page--overlay-calendar-switch",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"overlay-calendar-switch\"]",
+          "element_type": "switch",
+          "label": "overlay my calendar toggle",
+          "raw_text": "on"
+        },
+        {
+          "id": "screen-booking-page--toggle-group-item-month-view",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"toggle-group-item-month_view\"]",
+          "element_type": "radio",
+          "label": "switch to monthly view",
+          "raw_text": "$Switch to monthly view"
+        },
+        {
+          "id": "screen-booking-page--toggle-group-item-column-view",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"toggle-group-item-column_view\"]",
+          "element_type": "radio",
+          "label": "switch to column view",
+          "raw_text": "$Switch to column view"
+        },
+        {
+          "id": "screen-booking-page--avatar-href",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"avatar-href\"]",
+          "element_type": "link",
+          "label": "host profile link",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booking-page--r-28",
+          "screen_id": "screen-booking-page",
+          "selector": "#_r_28_",
+          "element_type": "text",
+          "label": "invitee name input",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booking-page--email",
+          "screen_id": "screen-booking-page",
+          "selector": "#email",
+          "element_type": "email",
+          "label": "invitee email input",
+          "raw_text": null
+        },
+        {
+          "id": "screen-booking-page--notes",
+          "screen_id": "screen-booking-page",
+          "selector": "#notes",
+          "element_type": "input",
+          "label": "additional notes input",
+          "raw_text": "Please share anything that will help prepare for our meeting."
+        },
+        {
+          "id": "screen-booking-page--add-guests",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"add-guests\"]",
+          "element_type": "button",
+          "label": "add guests",
+          "raw_text": "Add guests"
+        },
+        {
+          "id": "screen-booking-page--terms",
+          "screen_id": "screen-booking-page",
+          "selector": "a:has-text(\"Terms\")",
+          "element_type": "link",
+          "label": "terms link",
+          "raw_text": "Terms"
+        },
+        {
+          "id": "screen-booking-page--privacy-policy",
+          "screen_id": "screen-booking-page",
+          "selector": "a:has-text(\"Privacy Policy\")",
+          "element_type": "link",
+          "label": "privacy policy link",
+          "raw_text": "Privacy Policy"
+        },
+        {
+          "id": "screen-booking-page--back",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"back\"]",
+          "element_type": "button",
+          "label": "back to slot selection",
+          "raw_text": "Back"
+        },
+        {
+          "id": "screen-booking-page--confirm-book-button",
+          "screen_id": "screen-booking-page",
+          "selector": "[data-testid=\"confirm-book-button\"]",
+          "element_type": "button",
+          "label": "confirm booking",
+          "raw_text": "Confirm"
+        },
+        {
+          "id": "screen-booking-page--el-12",
+          "screen_id": "screen-booking-page",
+          "selector": "a",
+          "element_type": "link",
+          "label": "cal.com branding link",
+          "raw_text": null
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "flow-manage-event-types",
+      "name": "Manage event types",
+      "screen_ids": [
+        "screen-login"
+      ]
+    },
+    {
+      "id": "flow-set-availability",
+      "name": "Set availability",
+      "screen_ids": [
+        "screen-login"
+      ]
+    },
+    {
+      "id": "flow-book-a-slot",
+      "name": "Book a slot (invitee)",
+      "screen_ids": [
+        "screen-booker-landing",
+        "screen-booking-page"
+      ]
+    },
+    {
+      "id": "flow-review-bookings",
+      "name": "Review bookings",
+      "screen_ids": [
+        "screen-login"
+      ]
+    }
+  ]
+}

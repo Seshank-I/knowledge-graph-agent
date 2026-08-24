@@ -1,0 +1,47 @@
+{
+  "pr": {
+    "id": "pr-28534",
+    "number": 28534,
+    "title": "fix(calendar): add pointer cursor to enabled date buttons",
+    "url": "https://github.com/calcom/cal.diy/pull/28534",
+    "changed_files": [
+      "packages/features/calendars/components/DatePicker.tsx"
+    ]
+  },
+  "affected": [
+    {
+      "ui_element_label": "previous month",
+      "screen_name": "Public profile (event list)",
+      "flow_name": "Book a slot (invitee)",
+      "requirement_text": null,
+      "confidence": 0.9,
+      "needs_review": false
+    },
+    {
+      "ui_element_label": "next month",
+      "screen_name": "Public profile (event list)",
+      "flow_name": "Book a slot (invitee)",
+      "requirement_text": null,
+      "confidence": 0.9,
+      "needs_review": false
+    },
+    {
+      "ui_element_label": "pick a date",
+      "screen_name": "Public profile (event list)",
+      "flow_name": "Book a slot (invitee)",
+      "requirement_text": "Invitee can pick a date and time slot to book a meeting",
+      "confidence": 0.855,
+      "needs_review": false
+    },
+    {
+      "ui_element_label": "pick a date",
+      "screen_name": "Public profile (event list)",
+      "flow_name": "Book a slot (invitee)",
+      "requirement_text": "Invitee can open an event type and see available time slots for it",
+      "confidence": 0.54,
+      "needs_review": false
+    }
+  ],
+  "needs_review": [],
+  "summary": "This change adjusts how the date calendar on the public booking page responds to the mouse: dates that can be selected now show a pointer cursor. It touches the calendar component itself, so anything the calendar does is worth a look.\n\nWhat to re-test\n- Book a slot (invitee) flow, on the public booking page: picking a date in the calendar still selects it and loads that day's available times; the \"previous month\" and \"next month\" arrows still move between months; dates that cannot be booked stay unselectable.\n- Quick visual check: selectable dates show the hand cursor, disabled dates do not.\n\nRequirements at risk\n- \"Invitee can pick a date and time slot to book a meeting\" — the date half of this lives in the changed calendar.\n- \"Invitee can open an event type and see available time slots for it\" — slot availability is surfaced through this calendar, so confirm slots still appear after picking a date (this link is weaker; see below).\n\nUncertain — needs human review\nThe link between this change and \"see available time slots\" is a lower-confidence automated mapping: the calendar shows which days have availability, but the slot list itself is a separate component the change does not touch. Treat it as a quick sanity check rather than a likely break. The change is styling-only (a cursor), so the expected risk is low — but because it edits the shared calendar component, the checks above cover the blast radius if anything else was accidentally altered."
+}
