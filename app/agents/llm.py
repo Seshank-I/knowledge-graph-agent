@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 from typing import Type, TypeVar
 
 from anthropic import Anthropic
@@ -29,7 +30,7 @@ def client() -> Anthropic:
     return _client
 
 
-def complete(system: str, user: str, max_tokens: int = 4096) -> str:
+def _complete_api(system: str, user: str, max_tokens: int) -> str:
     resp = client().messages.create(
         model=settings.llm_model,
         max_tokens=max_tokens,
@@ -37,6 +38,30 @@ def complete(system: str, user: str, max_tokens: int = 4096) -> str:
         messages=[{"role": "user", "content": user}],
     )
     return resp.content[0].text
+
+
+def _complete_claude_cli(system: str, user: str) -> str:
+    """Route the completion through a locally-authenticated Claude Code CLI
+    (`claude -p`). Single turn, prompt over stdin (avoids argv size limits),
+    JSON result envelope parsed for the text."""
+    proc = subprocess.run(
+        ["claude", "-p", "--output-format", "json", "--max-turns", "1",
+         "--model", settings.llm_model],
+        input=f"{system}\n\n{user}",
+        capture_output=True, text=True, timeout=600,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(f"claude CLI failed: {proc.stderr[:500]}")
+    data = json.loads(proc.stdout)
+    if data.get("is_error"):
+        raise RuntimeError(f"claude CLI returned an error result: {data.get('result', '')[:500]}")
+    return data.get("result", "")
+
+
+def complete(system: str, user: str, max_tokens: int = 4096) -> str:
+    if settings.llm_backend == "claude_cli":
+        return _complete_claude_cli(system, user)
+    return _complete_api(system, user, max_tokens)
 
 
 def _extract_json(text: str) -> str:

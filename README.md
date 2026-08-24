@@ -71,6 +71,14 @@ summary is always deterministic).
 
 ## Run the full pipeline
 
+The LLM stages need credentials — either of:
+
+- `ANTHROPIC_API_KEY` in `.env` (default backend, Anthropic SDK), or
+- `LLM_BACKEND=claude_cli` in `.env` — routes LLM calls through a locally
+  installed, logged-in [Claude Code](https://claude.com/claude-code) CLI
+  (`claude -p`), so a Claude subscription works with no API key. Same
+  prompts and schema validation; slower per call.
+
 ```bash
 .venv/bin/uvicorn app.main:app --reload
 ```

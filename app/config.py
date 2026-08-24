@@ -15,6 +15,11 @@ class Settings(BaseSettings):
     neo4j_password: str = "testpassword123"
 
     # LLM
+    # backend "api" uses the Anthropic SDK (needs anthropic_api_key);
+    # "claude_cli" shells out to a locally-installed, already-authenticated
+    # Claude Code CLI (`claude -p`) — useful when you have a subscription
+    # but no API key. Same prompts, same validation, slower per call.
+    llm_backend: str = "api"
     anthropic_api_key: str = ""
     llm_model: str = "claude-sonnet-4-5"
 
