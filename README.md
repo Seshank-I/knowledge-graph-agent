@@ -39,7 +39,37 @@ cp .env.example .env           # fill in ANTHROPIC_API_KEY + a Cal.com test acco
 git clone --depth 1 https://github.com/calcom/cal.com data/cal.com
 ```
 
-## Run
+## Quickstart — no API key needed
+
+The repo ships the graph from the sample run (`data/graph_export.json`), so
+you can exercise the interesting endpoints without an Anthropic key, a
+Cal.com account, or a repo clone:
+
+```bash
+docker compose up -d
+.venv/bin/python -m scripts.seed_sample_graph   # loads the sample graph
+.venv/bin/uvicorn app.main:app --port 8000
+```
+
+Then:
+
+```bash
+curl localhost:8000/health                        # graph node counts
+curl localhost:8000/graph/absent-requirements     # the absence query
+curl -X POST localhost:8000/pipeline/blast-radius/28534   # DatePicker PR
+curl -X POST localhost:8000/pipeline/blast-radius/29940   # backend-only PR
+```
+
+Blast-radius calls fetch the PR live from GitHub (repo set by
+`TARGET_REPO_SLUG`, default calcom/cal.com — the sample graph was built
+against `calcom/cal.diy`, so set `TARGET_REPO_SLUG=calcom/cal.diy` in `.env`
+for the two PRs above). Anonymous GitHub API limits are low; set
+`GITHUB_TOKEN` in `.env` if you hit 403s. The structured findings are
+computed without any LLM; without an `ANTHROPIC_API_KEY` the prose summary
+falls back to a deterministic one-liner (and 29940's "unassessed, not safe"
+summary is always deterministic).
+
+## Run the full pipeline
 
 ```bash
 .venv/bin/uvicorn app.main:app --reload

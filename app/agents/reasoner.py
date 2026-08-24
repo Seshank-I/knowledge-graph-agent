@@ -118,13 +118,24 @@ def generate_report(client: GraphClient, pr_number: int) -> BlastRadiusReport:
             return (f"- element: {i.ui_element_label} | screen: {i.screen_name} | "
                     f"flow: {i.flow_name} | requirement: {i.requirement_text} | "
                     f"confidence: {i.confidence:.2f}")
-        summary = complete(
-            REPORT_SYSTEM,
-            f"PR #{pr.number}: {pr.title}\nURL: {pr.url}\n\n"
-            f"Confident impacts:\n" + "\n".join(fmt(i) for i in affected) +
-            "\n\nLow-confidence impacts (automated mapping, needs review):\n" +
-            ("\n".join(fmt(i) for i in needs_review) or "(none)"),
-        )
+        try:
+            summary = complete(
+                REPORT_SYSTEM,
+                f"PR #{pr.number}: {pr.title}\nURL: {pr.url}\n\n"
+                f"Confident impacts:\n" + "\n".join(fmt(i) for i in affected) +
+                "\n\nLow-confidence impacts (automated mapping, needs review):\n" +
+                ("\n".join(fmt(i) for i in needs_review) or "(none)"),
+            )
+        except Exception:
+            # No/failed LLM: fall back to a deterministic summary so the
+            # structured findings are still usable.
+            log.exception("report LLM unavailable — using deterministic summary")
+            summary = (
+                f"PR #{pr.number} (\"{pr.title}\") affects {len(affected)} "
+                f"confident item(s) and {len(needs_review)} item(s) needing "
+                "human review — see the structured lists in this report. "
+                "(Prose summary unavailable: LLM not configured.)"
+            )
 
     return BlastRadiusReport(
         pr=pr, affected=affected, needs_review=needs_review, summary=summary)

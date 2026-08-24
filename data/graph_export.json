@@ -1,0 +1,1434 @@
+{
+ "nodes": [
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-app-use-page-wrapper-auth-forgot-password-id-page-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/app/(use-page-wrapper)/auth/forgot-password/[id]/page.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-lib-csp-ts",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/lib/csp.ts"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-auth-login-view-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/auth/login-view.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-bookings-components-availabletimes-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/bookings/components/AvailableTimes.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-bookings-components-bookeventform-bookeventform-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/bookings/components/BookEventForm/BookEventForm.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-bookings-components-bookeventform-bookingfields-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/bookings/components/BookEventForm/BookingFields.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-bookings-components-overlaycalendar-overlaycalendarswitch-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/bookings/components/OverlayCalendar/OverlayCalendarSwitch.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-form-builder-components-components-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/form-builder/components/Components.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-apps-web-modules-timezone-components-timezoneselect-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "apps/web/modules/timezone/components/TimezoneSelect.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-packages-features-bookings-components-header-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "packages/features/bookings/components/Header.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-packages-features-bookings-components-timeformattoggle-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "packages/features/bookings/components/TimeFormatToggle.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-packages-features-calendars-components-datepicker-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "packages/features/calendars/components/DatePicker.tsx"
+   }
+  },
+  {
+   "label": "CodeElement",
+   "props": {
+    "id": "code-packages-ui-components-avatar-avatar-tsx",
+    "repo_ref": "calcom/cal.diy@main",
+    "file_path": "packages/ui/components/avatar/Avatar.tsx"
+   }
+  },
+  {
+   "label": "Flow",
+   "props": {
+    "id": "flow-book-a-slot",
+    "name": "Book a slot (invitee)"
+   }
+  },
+  {
+   "label": "Flow",
+   "props": {
+    "id": "flow-manage-event-types",
+    "name": "Manage event types"
+   }
+  },
+  {
+   "label": "Flow",
+   "props": {
+    "id": "flow-review-bookings",
+    "name": "Review bookings"
+   }
+  },
+  {
+   "label": "Flow",
+   "props": {
+    "id": "flow-set-availability",
+    "name": "Set availability"
+   }
+  },
+  {
+   "label": "PR",
+   "props": {
+    "id": "pr-28534",
+    "title": "fix(calendar): add pointer cursor to enabled date buttons",
+    "number": 28534,
+    "changed_files": [
+     "packages/features/calendars/components/DatePicker.tsx"
+    ],
+    "url": "https://github.com/calcom/cal.diy/pull/28534"
+   }
+  },
+  {
+   "label": "PR",
+   "props": {
+    "id": "pr-29940",
+    "title": "fix(emails): customReplyToEmail no longer dropped when hideOrganizerEmail is true ",
+    "number": 29940,
+    "changed_files": [
+     "packages/lib/getReplyToHeader.test.ts",
+     "packages/lib/getReplyToHeader.ts"
+    ],
+    "url": "https://github.com/calcom/cal.diy/pull/29940"
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-a-booked-slot-is-reserved-so",
+    "text": "A booked slot is reserved so others cannot double-book it for a period of time",
+    "coverage_status": "not_found",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": false
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-booking-related-emails-notify-attendees-of-changes",
+    "text": "Booking-related emails notify attendees of changes such as location updates",
+    "coverage_status": "not_found",
+    "feature_area": "notifications",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": false
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-add-guests-to-a",
+    "text": "Invitee can add guests to a booking",
+    "coverage_status": "covered",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-cancel-an-existing-booking",
+    "text": "Invitee can cancel an existing booking",
+    "coverage_status": "not_found",
+    "feature_area": "bookings",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-enter-their-name-and",
+    "text": "Invitee can enter their name and email to confirm a booking",
+    "coverage_status": "covered",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-open-an-event-type",
+    "text": "Invitee can open an event type and see available time slots for it",
+    "coverage_status": "covered",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-pick-a-date-and",
+    "text": "Invitee can pick a date and time slot to book a meeting",
+    "coverage_status": "covered",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-reschedule-an-existing-booking",
+    "text": "Invitee can reschedule an existing booking to a different slot",
+    "coverage_status": "not_found",
+    "feature_area": "bookings",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-select-their-timezone-when",
+    "text": "Invitee can select their timezone when viewing available slots",
+    "coverage_status": "covered",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-switch-between-12-hour-and",
+    "text": "Invitee can switch between 12-hour and 24-hour time format on the booking page",
+    "coverage_status": "covered",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-invitee-can-view-a-persons-public",
+    "text": "Invitee can view a person's public profile page listing their bookable event types",
+    "coverage_status": "ambiguous",
+    "feature_area": "booking",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-booking-limits-cap-total-bookings",
+    "text": "User booking limits cap total bookings per day, week, month, or year",
+    "coverage_status": "not_found",
+    "feature_area": "availability",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": false
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-confirm-or-decline-a",
+    "text": "User can confirm or decline a booking that requires confirmation",
+    "coverage_status": "not_found",
+    "feature_area": "bookings",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-create-a-new-event",
+    "text": "User can create a new event type with a title and duration",
+    "coverage_status": "not_found",
+    "feature_area": "event-types",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-create-an-out-of-office-entry",
+    "text": "User can create an out-of-office entry so no bookings land in that period",
+    "coverage_status": "not_found",
+    "feature_area": "availability",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-create-and-edit-availability",
+    "text": "User can create and edit availability schedules defining working hours",
+    "coverage_status": "not_found",
+    "feature_area": "availability",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-log-in-with-email",
+    "text": "User can log in with email and password",
+    "coverage_status": "covered",
+    "feature_area": "auth",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-update-their-profile-name",
+    "text": "User can update their profile (name, email) in settings",
+    "coverage_status": "not_found",
+    "feature_area": "settings",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Requirement",
+   "props": {
+    "id": "req-user-can-view-their-upcoming-bookings",
+    "text": "User can view their upcoming bookings in a list",
+    "coverage_status": "not_found",
+    "feature_area": "bookings",
+    "source_doc": "https://cal.com/docs/llms.txt",
+    "testable": true
+   }
+  },
+  {
+   "label": "Screen",
+   "props": {
+    "id": "screen-booker-landing",
+    "name": "Public profile (event list)",
+    "url": "https://app.cal.com/peer"
+   }
+  },
+  {
+   "label": "Screen",
+   "props": {
+    "id": "screen-booking-page",
+    "name": "Public booking page (form step)",
+    "url": "https://i.cal.com/peer/meet?user=peer&orgRedirection=true&slot=2026-08-24T10%3A30%3A00.000Z"
+   }
+  },
+  {
+   "label": "Screen",
+   "props": {
+    "id": "screen-login",
+    "name": "Login",
+    "url": "https://app.cal.com/auth/login"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"avatar-href\"]",
+    "id": "screen-booker-landing--avatar-href",
+    "label": "host profile link",
+    "element_type": "link"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"day\"]",
+    "id": "screen-booker-landing--day",
+    "label": "pick a date",
+    "element_type": "button",
+    "raw_text": "8"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"decrementMonth\"]",
+    "id": "screen-booker-landing--decrementmonth",
+    "label": "previous month",
+    "element_type": "button"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "a",
+    "id": "screen-booker-landing--el-76",
+    "label": "cal.com branding link",
+    "element_type": "link"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"incrementMonth\"]",
+    "id": "screen-booker-landing--incrementmonth",
+    "label": "next month",
+    "element_type": "button"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"overlay-calendar-switch\"]",
+    "id": "screen-booker-landing--overlay-calendar-switch",
+    "label": "overlay my calendar toggle",
+    "element_type": "switch",
+    "raw_text": "on"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "#react-select-2-input",
+    "id": "screen-booker-landing--react-select-2-input",
+    "label": "timezone selector",
+    "element_type": "text"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"time\"]",
+    "id": "screen-booker-landing--time",
+    "label": "pick a time slot",
+    "element_type": "button",
+    "raw_text": "4:00pm"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"toggle-group-item-column_view\"]",
+    "id": "screen-booker-landing--toggle-group-item-column-view",
+    "label": "switch to column view",
+    "element_type": "radio",
+    "raw_text": "$Switch to column view"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"toggle-group-item-h:mma\"]",
+    "id": "screen-booker-landing--toggle-group-item-h-mma",
+    "label": "12-hour time format toggle",
+    "element_type": "radio",
+    "raw_text": "12h"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"toggle-group-item-HH:mm\"]",
+    "id": "screen-booker-landing--toggle-group-item-hh-mm",
+    "label": "24-hour time format toggle",
+    "element_type": "radio",
+    "raw_text": "24h"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"toggle-group-item-month_view\"]",
+    "id": "screen-booker-landing--toggle-group-item-month-view",
+    "label": "switch to monthly view",
+    "element_type": "radio",
+    "raw_text": "$Switch to monthly view"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"add-guests\"]",
+    "id": "screen-booking-page--add-guests",
+    "label": "add guests",
+    "element_type": "button",
+    "raw_text": "Add guests"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"avatar-href\"]",
+    "id": "screen-booking-page--avatar-href",
+    "label": "host profile link",
+    "element_type": "link"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"back\"]",
+    "id": "screen-booking-page--back",
+    "label": "back to slot selection",
+    "element_type": "button",
+    "raw_text": "Back"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"confirm-book-button\"]",
+    "id": "screen-booking-page--confirm-book-button",
+    "label": "confirm booking",
+    "element_type": "button",
+    "raw_text": "Confirm"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "a",
+    "id": "screen-booking-page--el-12",
+    "label": "cal.com branding link",
+    "element_type": "link"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "#email",
+    "id": "screen-booking-page--email",
+    "label": "invitee email input",
+    "element_type": "email"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "#notes",
+    "id": "screen-booking-page--notes",
+    "label": "additional notes input",
+    "element_type": "input",
+    "raw_text": "Please share anything that will help prepare for our meeting."
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"overlay-calendar-switch\"]",
+    "id": "screen-booking-page--overlay-calendar-switch",
+    "label": "overlay my calendar toggle",
+    "element_type": "switch",
+    "raw_text": "on"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "a:has-text(\"Privacy Policy\")",
+    "id": "screen-booking-page--privacy-policy",
+    "label": "privacy policy link",
+    "element_type": "link",
+    "raw_text": "Privacy Policy"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "#_r_28_",
+    "id": "screen-booking-page--r-28",
+    "label": "invitee name input",
+    "element_type": "text"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "a:has-text(\"Terms\")",
+    "id": "screen-booking-page--terms",
+    "label": "terms link",
+    "element_type": "link",
+    "raw_text": "Terms"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"toggle-group-item-column_view\"]",
+    "id": "screen-booking-page--toggle-group-item-column-view",
+    "label": "switch to column view",
+    "element_type": "radio",
+    "raw_text": "$Switch to column view"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"toggle-group-item-month_view\"]",
+    "id": "screen-booking-page--toggle-group-item-month-view",
+    "label": "switch to monthly view",
+    "element_type": "radio",
+    "raw_text": "$Switch to monthly view"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "button:has-text(\"Continue\")",
+    "id": "screen-login--continue",
+    "label": "submit login",
+    "element_type": "button",
+    "raw_text": "Continue"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "a:has-text(\"Create account\")",
+    "id": "screen-login--create-account",
+    "label": "create account link",
+    "element_type": "link",
+    "raw_text": "Create account"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "button",
+    "id": "screen-login--el-5",
+    "label": "toggle password visibility",
+    "element_type": "button"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "#email",
+    "id": "screen-login--email",
+    "label": "email address input",
+    "element_type": "email"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "a:has-text(\"Forgot?\")",
+    "id": "screen-login--forgot",
+    "label": "forgot password link",
+    "element_type": "link",
+    "raw_text": "Forgot?"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"google\"]",
+    "id": "screen-login--google",
+    "label": "sign in with google",
+    "element_type": "button",
+    "raw_text": "Sign in with Google"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"microsoft\"]",
+    "id": "screen-login--microsoft",
+    "label": "sign in with microsoft",
+    "element_type": "button",
+    "raw_text": "Sign in with Microsoft"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "#password",
+    "id": "screen-login--password",
+    "label": "password input",
+    "element_type": "password"
+   }
+  },
+  {
+   "label": "UIElement",
+   "props": {
+    "selector": "[data-testid=\"samlAndOidc\"]",
+    "id": "screen-login--samlandoidc",
+    "label": "sign in with saml/oidc",
+    "element_type": "button",
+    "raw_text": "Sign in with SAML/OIDC"
+   }
+  }
+ ],
+ "edges": [
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--avatar-href",
+   "target": "code-packages-ui-components-avatar-avatar-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'avatar-href'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--day",
+   "target": "code-packages-features-calendars-components-datepicker-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'day'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--decrementmonth",
+   "target": "code-packages-features-calendars-components-datepicker-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'decrementMonth'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--incrementmonth",
+   "target": "code-packages-features-calendars-components-datepicker-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'incrementMonth'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--overlay-calendar-switch",
+   "target": "code-apps-web-modules-bookings-components-overlaycalendar-overlaycalendarswitch-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'overlay-calendar-switch'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--react-select-2-input",
+   "target": "code-apps-web-modules-timezone-components-timezoneselect-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.7,
+    "rationale": "LLM fallback: booker timezone combobox is the TimezoneSelect component"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--time",
+   "target": "code-apps-web-modules-bookings-components-availabletimes-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.8,
+    "rationale": "LLM fallback: slot buttons are rendered by AvailableTimes.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--toggle-group-item-column-view",
+   "target": "code-packages-features-bookings-components-header-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "LLM fallback: booker layout toggles live in the bookings Header component"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--toggle-group-item-h-mma",
+   "target": "code-packages-features-bookings-components-timeformattoggle-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.85,
+    "rationale": "LLM fallback: TimeFormatToggle.tsx renders the 12h/24h toggle group"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--toggle-group-item-hh-mm",
+   "target": "code-packages-features-bookings-components-timeformattoggle-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.85,
+    "rationale": "LLM fallback: TimeFormatToggle.tsx renders the 12h/24h toggle group"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booker-landing--toggle-group-item-month-view",
+   "target": "code-packages-features-bookings-components-header-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "LLM fallback: booker layout toggles live in the bookings Header component"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--add-guests",
+   "target": "code-apps-web-modules-form-builder-components-components-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'add-guests'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--avatar-href",
+   "target": "code-packages-ui-components-avatar-avatar-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'avatar-href'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--back",
+   "target": "code-packages-features-bookings-components-header-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.5,
+    "rationale": "LLM fallback: back control in the booker header, uncertain"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--confirm-book-button",
+   "target": "code-apps-web-modules-bookings-components-bookeventform-bookeventform-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.85,
+    "rationale": "LLM fallback: override: on the form step the Confirm button is BookEventForm's submit"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--email",
+   "target": "code-apps-web-modules-bookings-components-bookeventform-bookingfields-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.8,
+    "rationale": "LLM fallback: booking form fields are rendered by BookingFields.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--notes",
+   "target": "code-apps-web-modules-bookings-components-bookeventform-bookingfields-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.8,
+    "rationale": "LLM fallback: booking form fields are rendered by BookingFields.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--overlay-calendar-switch",
+   "target": "code-apps-web-modules-bookings-components-overlaycalendar-overlaycalendarswitch-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "unique data-testid search hit for 'overlay-calendar-switch'"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--r-28",
+   "target": "code-apps-web-modules-bookings-components-bookeventform-bookingfields-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.8,
+    "rationale": "LLM fallback: booking form fields are rendered by BookingFields.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--toggle-group-item-column-view",
+   "target": "code-packages-features-bookings-components-header-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "LLM fallback: booker layout toggles live in the bookings Header component"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-booking-page--toggle-group-item-month-view",
+   "target": "code-packages-features-bookings-components-header-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "LLM fallback: booker layout toggles live in the bookings Header component"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--continue",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.75,
+    "rationale": "LLM fallback: login submit button in login-view.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--create-account",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.55,
+    "rationale": "LLM fallback: footer link on the login view"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--el-5",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": true,
+    "confidence": 0.4,
+    "rationale": "LLM fallback: password-visibility toggle, guessing login view"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--email",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.75,
+    "rationale": "LLM fallback: login form fields live in login-view.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--forgot",
+   "target": "code-apps-web-app-use-page-wrapper-auth-forgot-password-id-page-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.5,
+    "rationale": "token overlap between element label and file path"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--google",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.75,
+    "rationale": "LLM fallback: override: 'google' hit in csp.ts is a CSP allowlist, not the button"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--microsoft",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "LLM fallback: SSO buttons rendered by the login view"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--password",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.75,
+    "rationale": "LLM fallback: login form fields live in login-view.tsx"
+   }
+  },
+  {
+   "type": "BUILT_BY",
+   "source": "screen-login--samlandoidc",
+   "target": "code-apps-web-modules-auth-login-view-tsx",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "LLM fallback: SSO buttons rendered by the login view"
+   }
+  },
+  {
+   "type": "CHANGES",
+   "source": "pr-28534",
+   "target": "code-packages-features-calendars-components-datepicker-tsx",
+   "props": {}
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--avatar-href",
+   "target": "req-invitee-can-view-a-persons-public",
+   "props": {
+    "needs_review": true,
+    "confidence": 0.4,
+    "rationale": "profile link present, but this booker skips the event-type list page"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--day",
+   "target": "req-invitee-can-open-an-event-type",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.6,
+    "rationale": "slot availability is shown via the calendar, partial"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--day",
+   "target": "req-invitee-can-pick-a-date-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.95,
+    "rationale": "date picker button in the booker calendar"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--react-select-2-input",
+   "target": "req-invitee-can-select-their-timezone-when",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.85,
+    "rationale": "timezone combobox in the booker footer"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--time",
+   "target": "req-invitee-can-open-an-event-type",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.7,
+    "rationale": "the visible slot list is the 'see available time slots' surface"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--time",
+   "target": "req-invitee-can-pick-a-date-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.95,
+    "rationale": "time-slot button in the booker"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--toggle-group-item-h-mma",
+   "target": "req-invitee-can-switch-between-12-hour-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "12h format toggle"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booker-landing--toggle-group-item-hh-mm",
+   "target": "req-invitee-can-switch-between-12-hour-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "24h format toggle"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booking-page--add-guests",
+   "target": "req-invitee-can-add-guests-to-a",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.95,
+    "rationale": "explicit add-guests control on the booking form"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booking-page--confirm-book-button",
+   "target": "req-invitee-can-enter-their-name-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.95,
+    "rationale": "confirm button submits the booking"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booking-page--confirm-book-button",
+   "target": "req-invitee-can-pick-a-date-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.7,
+    "rationale": "completes the pick-and-book action started on the slot screen"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booking-page--email",
+   "target": "req-invitee-can-enter-their-name-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "invitee email input on the booking form"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-booking-page--r-28",
+   "target": "req-invitee-can-enter-their-name-and",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.85,
+    "rationale": "invitee name input on the booking form (unstable react id selector)"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-login--continue",
+   "target": "req-user-can-log-in-with-email",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.95,
+    "rationale": "submits the email+password login form"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-login--email",
+   "target": "req-user-can-log-in-with-email",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "email input on the login form"
+   }
+  },
+  {
+   "type": "IMPLEMENTS",
+   "source": "screen-login--password",
+   "target": "req-user-can-log-in-with-email",
+   "props": {
+    "needs_review": false,
+    "confidence": 0.9,
+    "rationale": "password input on the login form"
+   }
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--avatar-href",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--day",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--decrementmonth",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--el-76",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--incrementmonth",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--overlay-calendar-switch",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--react-select-2-input",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--time",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--toggle-group-item-column-view",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--toggle-group-item-h-mma",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--toggle-group-item-hh-mm",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booker-landing--toggle-group-item-month-view",
+   "target": "screen-booker-landing",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--add-guests",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--avatar-href",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--back",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--confirm-book-button",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--el-12",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--email",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--notes",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--overlay-calendar-switch",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--privacy-policy",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--r-28",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--terms",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--toggle-group-item-column-view",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-booking-page--toggle-group-item-month-view",
+   "target": "screen-booking-page",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--continue",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--create-account",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--el-5",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--email",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--forgot",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--google",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--microsoft",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--password",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "PART_OF",
+   "source": "screen-login--samlandoidc",
+   "target": "screen-login",
+   "props": {}
+  },
+  {
+   "type": "STEP_IN",
+   "source": "screen-booker-landing",
+   "target": "flow-book-a-slot",
+   "props": {
+    "order": 0
+   }
+  },
+  {
+   "type": "STEP_IN",
+   "source": "screen-booking-page",
+   "target": "flow-book-a-slot",
+   "props": {
+    "order": 1
+   }
+  },
+  {
+   "type": "STEP_IN",
+   "source": "screen-login",
+   "target": "flow-manage-event-types",
+   "props": {
+    "order": 0
+   }
+  },
+  {
+   "type": "STEP_IN",
+   "source": "screen-login",
+   "target": "flow-review-bookings",
+   "props": {
+    "order": 0
+   }
+  },
+  {
+   "type": "STEP_IN",
+   "source": "screen-login",
+   "target": "flow-set-availability",
+   "props": {
+    "order": 0
+   }
+  }
+ ]
+}

@@ -93,7 +93,10 @@ def run_link() -> dict:
 
     implements = req_linker.link_requirements(crawl.screens, spec.requirements)
     elements = [el for s in crawl.screens for el in s.elements]
-    code_elements, built_by = code_mapper.map_elements(elements)
+    try:
+        code_elements, built_by = code_mapper.map_elements(elements)
+    except FileNotFoundError as e:
+        raise HTTPException(409, str(e))
 
     with _client() as client:
         client.upsert_implements_edges(implements)
