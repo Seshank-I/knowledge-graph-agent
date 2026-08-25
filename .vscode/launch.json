@@ -1,0 +1,68 @@
+{
+  // Debug configs for the pipeline. All of them read .env from the repo root
+  // (pydantic-settings does that itself; envFile is set anyway so ad-hoc
+  // overrides in .env reach spawned processes too).
+  //
+  // Prereq for anything touching the graph:  docker compose up -d
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // The whole API under the debugger. --reload is OFF on purpose:
+      // the reloader forks a child process and breakpoints land in the
+      // wrong one. Set breakpoints anywhere in app/ and hit the endpoint
+      // with curl.
+      "name": "API (uvicorn, debuggable)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["app.main:app", "--port", "8000"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": true,
+      "console": "integratedTerminal"
+    },
+    {
+      // Fastest loop for graph-layer work: seeds synthetic data, asserts
+      // coverage/absence/blast-radius math, cleans up. No LLM calls.
+      "name": "Graph smoke test",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "tests.test_graph_smoke",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Seed sample graph",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "scripts.seed_sample_graph",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    },
+    {
+      // Debug one stage in isolation without the HTTP layer — open a
+      // scratch file that calls e.g. parse_spec(...) or crawl(...) and
+      // run it with this.
+      "name": "Current file",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    },
+    {
+      // Crawler with visible browser: pair with headless=False (see the
+      // debugging notes) to watch Playwright click through the booker.
+      "name": "Crawler (direct, no server)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "scripts.debug_crawl",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    }
+  ]
+}

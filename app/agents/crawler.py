@@ -34,6 +34,10 @@ log = logging.getLogger(__name__)
 
 ARTIFACTS_DIR = Path("data/artifacts")
 
+# Overridable for debugging (scripts/debug_crawl.py --headed sets
+# {"headless": False, "slow_mo": 300} to watch the browser work).
+LAUNCH_OPTIONS: dict = {"headless": True}
+
 # ---------------------------------------------------------------------------
 # The fixed crawl scope. Paths are relative to settings.target_app_base_url.
 # auth=True screens need the test-account login first.
@@ -201,7 +205,7 @@ async def crawl(username: str | None = None) -> CrawlResult:
 
     screens: list[Screen] = []
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
+        browser = await pw.chromium.launch(**LAUNCH_OPTIONS)
         page = await browser.new_page(viewport={"width": 1440, "height": 900})
 
         logged_in = False
